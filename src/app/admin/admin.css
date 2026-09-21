@@ -32,7 +32,6 @@
 .admin-page .run-status.interrupted { color: var(--warning-text); }
 .admin-page .admin-round-select { display: flex; align-items: center; gap: 12px; margin: 26px 0; font-size: 12px; color: var(--muted-foreground); }
 .admin-page .admin-round-select select { border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; color: var(--foreground); max-width: 100%; background: var(--panel); }
-.admin-page .question-bubble { margin: 26px 0 30px auto; max-width: 780px; font-size: 14px; line-height: 1.7; }
 .admin-page .admin-answer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: start; }
 .admin-page .admin-answer-grid > section { min-width: 0; }
 .admin-page .answer-card { border-radius: 9px; }
@@ -42,30 +41,11 @@
 .admin-page .answer-body { padding: 18px; }
 .admin-page .response-copy { font-size: 14px; line-height: 1.85; }
 .admin-page .admin-method-meta { padding: 14px 0; gap: 10px; }
-.admin-page .admin-thinking { border-top: 1px solid var(--border); }
-.admin-page .trace-toggle { display: flex; align-items: center; gap: 7px; width: 100%; text-align: left; padding: 12px 5px; font-size: 12px; border-radius: 6px; }
-.admin-page .trace-toggle span { flex: 1; }
-.admin-page .trace-toggle:hover, .admin-page .trace-step:hover, .admin-page .tool-row > button:hover, .admin-page .visit-step-link:hover { background: var(--surface-1); }
-.admin-page .trace-collapse { overflow: hidden; }
-.admin-page .trace-rail { list-style: none; margin: 8px 0 0 9px; padding: 0 0 0 12px; border-left: 1px solid var(--border); }
-.admin-page .trace-rail > li { margin-bottom: 18px; }
-.admin-page .trace-step { width: 100%; display: flex; gap: 8px; align-items: center; padding: 5px; text-align: left; border-radius: 5px; font-size: 12px; }
-.admin-page .trace-step > span:nth-child(2) { flex: 1; }
-.admin-page .trace-step[aria-pressed=true] { background: var(--selection-bg); color: var(--admin-accent); }
-.admin-page .step-number { font-size: 10px; color: var(--muted-foreground); }
-.admin-page .step-detail { padding: 3px 5px; }
-.admin-page .trace-time { color: var(--muted-foreground); font-size: 10px; display: block; margin-bottom: 10px; }
 .admin-page .detail-label { display: block; color: var(--muted-foreground); font-size: 10px; margin: 8px 0 5px; }
-.admin-page .step-detail .response-copy { font-size: 12px; line-height: 1.8; }
 .admin-page .muted { color: var(--muted-foreground); font-size: 12px; line-height: 1.7; }
 .admin-page .node-chips { display: flex; gap: 5px; flex-wrap: wrap; margin: 9px 0; }
 .admin-page .node-chips button { border: 1px solid var(--border); border-radius: 5px; font-size: 10px; padding: 3px 6px; color: var(--text-secondary); }
 .admin-page .node-chips button:hover { background: var(--surface-1); border-color: var(--muted-foreground); }
-.admin-page .tool-row > button { display: flex; align-items: center; gap: 6px; width: 100%; min-height: 32px; padding: 5px; border-radius: 5px; text-align: left; }
-.admin-page .tool-row code { font-size: 11px; overflow-wrap: anywhere; flex: 1; }
-.admin-page .tool-detail { border-left: 1px solid var(--border); margin-left: 9px; padding: 6px 10px; }
-.admin-page .tool-detail .muted { overflow-wrap: anywhere; font-size: 10px; }
-.admin-page .tool-detail pre { background: var(--surface-1); border-radius: 5px; padding: 9px; font-size: 11px; line-height: 1.7; overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
 .admin-page .admin-graph { border-top: 1px solid var(--border); margin-top: 40px; padding-top: 25px; }
 .admin-page .graph-heading { display: flex; justify-content: space-between; gap: 16px; }
 .admin-page .graph-heading h2 { font-size: 18px; font-weight: 500; }
@@ -168,7 +148,6 @@
 .admin-page .conversation-turn { scroll-margin-top:25px; margin-top:26px; padding-bottom:25px; }
 .admin-page .turn-marker { font-size:10px; color:var(--muted-foreground); text-transform:uppercase; letter-spacing:.08em; }
 .admin-page .inside-execution { padding:10px 15px 0; border-bottom:1px solid var(--border); }
-.admin-page .inside-execution .trace-toggle { font-size:11px; }
 .admin-page .inside-execution .muted { font-size:10px; }
 .admin-page .answer-card .answer-method { display:block; margin-top:5px; }
 .admin-page .inspecting .admin-answer-grid { grid-template-columns:1fr; }
@@ -191,5 +170,39 @@
 .admin-page .returned-toggle input { accent-color:var(--foreground); }
 @media(max-width:767px) { .admin-page .analysis-battle-entry { align-items:flex-start; flex-direction:column; } }
 
-.admin-page .tool-summary { flex:1; min-width:0; }
-.admin-page .tool-summary small { display:block; font-size:10px; line-height:1.5; color:var(--muted-foreground); margin:4px 0; }
+
+/* Battles reuse chat message cells; execution disclosures contain fixed mock data. */
+.admin-page .admin-user-message { margin:14px 0 24px; }
+.admin-page .admin-answer-grid > .agent-message { min-width:0; }
+.admin-page .agent-answer-header .answer-method { display:block; margin-top:4px; }
+.admin-page .inside-execution { padding:10px 16px 16px; margin-bottom:8px; }
+.admin-page .admin-execution-messages { margin-top:12px; }
+.admin-page .admin-execution-heading { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:4px 8px; color:var(--muted-foreground); font-size:11px; }
+.admin-page .admin-execution-heading .agent-button { font-size:10px; padding-inline:6px; }
+.admin-page .admin-execution-heading [aria-expanded="true"] svg { transform:rotate(180deg); }
+.admin-page .admin-execution-step { margin-top:10px; min-width:0; }
+.admin-page .admin-step-select { width:100%; height:auto; justify-content:flex-start; text-align:left; white-space:normal; font-size:11px; padding:6px 0; gap:8px; }
+.admin-page .admin-step-select > span:first-child { color:var(--muted-foreground); font-size:10px; font-variant-numeric:tabular-nums; }
+.admin-page .admin-step-select .run-status { margin-left:auto; flex-shrink:0; }
+.admin-page .admin-step-select[aria-pressed="true"] { color:var(--foreground); text-decoration:underline; text-underline-offset:4px; }
+.admin-page .admin-tool-messages { display:flex; flex-direction:column; gap:6px; }
+.admin-page .admin-tool-message .agent-bubble-content { width:100%; max-width:none; padding:0; border-radius:9px; white-space:normal; }
+.admin-page .admin-tool-disclosure > summary { display:flex; align-items:center; gap:8px; list-style:none; padding:10px 11px; cursor:pointer; font-size:11px; line-height:1.5; border-radius:9px; }
+.admin-page .admin-tool-disclosure > summary::-webkit-details-marker { display:none; }
+.admin-page .admin-tool-disclosure > summary:hover { background:color-mix(in srgb,var(--foreground) 4%,transparent); }
+.admin-page .admin-tool-disclosure > summary > svg { flex-shrink:0; color:var(--muted-foreground); }
+.admin-page .admin-tool-title { min-width:0; flex:1; }
+.admin-page .admin-tool-title code { font-size:11px; overflow-wrap:anywhere; }
+.admin-page .admin-tool-title small { display:block; color:var(--muted-foreground); font-size:10px; }
+.admin-page .admin-tool-status { display:flex; align-items:center; gap:4px; flex-shrink:0; color:var(--muted-foreground); font-size:9px; }
+.admin-page .admin-tool-status.failed { color:var(--destructive,#b45342); }
+.admin-page .admin-tool-chevron { transition:transform .16s ease-out; }
+.admin-page .admin-tool-disclosure[open] .admin-tool-chevron { transform:rotate(180deg); }
+.admin-page .admin-tool-payload { padding:0 12px 12px; border-top:1px solid var(--border); }
+.admin-page .admin-tool-meta,.admin-page .admin-execution-empty { color:var(--muted-foreground); font-size:10px; line-height:1.6; margin:8px 0; overflow-wrap:anywhere; }
+.admin-page .admin-tool-payload pre { margin:6px 0 10px; padding:10px; max-height:260px; overflow:auto; background:var(--background); border:1px solid var(--border); border-radius:6px; font:11px/1.6 ui-monospace,monospace; white-space:pre-wrap; overflow-wrap:anywhere; }
+.admin-page .admin-step-summary { border-left:1px solid var(--border); padding:8px 12px; margin:4px 0 10px; }
+.admin-page .admin-step-summary p { font-size:12px; line-height:1.7; color:var(--text-secondary); margin:6px 0; }
+.admin-page .admin-tool-disclosure > summary:focus-visible,.admin-page .admin-tool-payload pre:focus-visible { outline:2px solid var(--focus-ring); outline-offset:2px; }
+@media(max-width:767px) { .admin-page .admin-user-message .agent-bubble-content { max-width:95%; }.admin-page .admin-tool-status { font-size:8px; } }
+@media(prefers-reduced-motion:reduce) { .admin-page .admin-tool-chevron { transition:none; } }

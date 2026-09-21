@@ -31,8 +31,8 @@ const ResearchGraph = dynamic(
   },
 );
 import { Answer } from "@/components/arena/answer";
-import { ThinkingState } from "@/components/beautiful/thinking-state";
-import { ToolChips } from "@/components/beautiful/tool-chips";
+import { ExecutionMessages, ToolMessages } from "./execution-messages";
+import { Message, MessageBubble, MessageBubbleContent } from "@/components/agentui/message";
 import {
   Table,
   TableHeader,
@@ -431,7 +431,7 @@ export function AdminDetail({ record }: { record: AdminRecord }) {
   const related = selectRecords({ ...f, batch: f.batch || "AKI pilot A" }),
     position = related.findIndex((r) => r.id === record.id);
   const [open, setOpen] = useState<Record<string, boolean>>({}),
-    [inspector, setInspector] = useState(true),
+    [inspector, setInspector] = useState(false),
     [candidate, setCandidate] = useState(
       Math.max(
         0,
@@ -542,11 +542,12 @@ export function AdminDetail({ record }: { record: AdminRecord }) {
           {record.rounds.map((turn, ti) => (
             <section key={turn.id} id={turn.id} className="conversation-turn">
               <p className="turn-marker">Turn {ti + 1}</p>
-              <div className="question-bubble">{turn.prompt}</div>
+              <Message from="user" className="admin-user-message"><MessageBubble><MessageBubbleContent>{turn.prompt}</MessageBubbleContent></MessageBubble></Message>
               <div className="admin-answer-grid">
                 {turn.runs.map((r, c) => (
                   <Answer
                     key={r.id}
+                    appearance="chat"
                     label={`Assistant ${c === 0 ? "A" : "B"}`}
                     method={`${r.model} · ${METHOD_NAMES[r.method]}`}
                     text={r.answer || ""}
@@ -569,7 +570,7 @@ export function AdminDetail({ record }: { record: AdminRecord }) {
                             : "Trace not recorded"}{" "}
                           · Graph coverage {formatCoverage(coverage([r]))}
                         </span>
-                        <ThinkingState
+                        <ExecutionMessages
                           recorded={r.traceAvailable}
                           steps={r.steps}
                           expanded={!!open[r.id]}
@@ -692,7 +693,7 @@ export function AdminDetail({ record }: { record: AdminRecord }) {
                         {e.event.nodeNotes?.[node] && (
                           <p className="muted">{e.event.nodeNotes[node]}</p>
                         )}
-                        <ToolChips calls={e.event.tools} />
+                        <ToolMessages calls={e.event.tools} />
                       </div>
                     ))}
                 </>

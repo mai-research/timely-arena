@@ -67,3 +67,26 @@ test('shared Answer retains its existing default appearance and admin content sl
   assert.match(html, /Saved output/);
   assert.doesNotMatch(html, /class="agent-message/);
 });
+
+const { ToolMessages, ExecutionMessages } = load('../src/components/admin/execution-messages.tsx');
+test('mock tool cells preserve failed and recovered calls with separate identities and accessible disclosures', () => {
+  const calls = [
+    {id:'attempt',name:'graph.query',status:'failed',input:{node:'aki'},error:'Timed out',durationMs:2000},
+    {id:'retry',name:'graph.query',status:'completed',input:{node:'aki'},output:{nodes:['aki']},durationMs:42},
+  ];
+  const before=JSON.stringify(calls), html=render(h(ToolMessages,{calls}));
+  assert.equal((html.match(/<details/g)||[]).length,2);
+  assert.doesNotMatch(html, /<details[^>]* open/);
+  for(const text of ['Mock call · attempt','Mock call · retry','Timed out','2000 ms','42 ms','graph.query parameters','graph.query result','graph.query error']) assert.ok(html.includes(text),text);
+  assert.equal(JSON.stringify(calls),before);
+});
+test('execution cells distinguish missing traces from recorded executions without tools', () => {
+  const props={steps:[],expanded:false,onExpandedChange:noop,onSelect:noop,onNode:noop};
+  assert.match(render(h(ExecutionMessages,{...props,recorded:false})),/Tool usage not recorded/);
+  assert.match(render(h(ExecutionMessages,{...props,recorded:true})),/No tool calls recorded/);
+  const step={id:'step-fixture',label:'Inspect measurements',status:'completed',summary:'Authored fixture summary',queriedNodeIds:[],returnedNodeIds:[],tools:[{id:'call',name:'read.measurements',status:'interrupted',input:{}}]};
+  const collapsed=render(h(ExecutionMessages,{...props,steps:[step]}));
+  assert.match(collapsed,/read.measurements/); assert.doesNotMatch(collapsed,/Authored fixture summary/);
+  const expanded=render(h(ExecutionMessages,{...props,steps:[step],expanded:true}));
+  assert.match(expanded,/id="step-fixture"/); assert.match(expanded,/Authored fixture summary/); assert.match(expanded,/Not recorded/);
+});
