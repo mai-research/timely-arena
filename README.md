@@ -42,7 +42,7 @@ Leaderboard fixtures are independent of browser-local chats and votes. No live e
 
 ## Researcher admin demo
 
-Set `ADMIN_DEMO_ENABLED=true` in `.env.local` and restart the dev server to enable Admin. Default is disabled; both `/admin` and `/admin/runs/[id]` return 404 when disabled. This server configuration is a demo switch, not authentication or administrator authorization.
+Admin has no public navigation entry. Open `/admin` directly to access the demo. Set `ADMIN_DEMO_ENABLED=true` in the server environment (or `.env.local` for local development) and restart the server to enable it. Default is disabled; both `/admin` and `/admin/runs/[id]` return 404 when disabled. Anyone with the URL can access it when enabled. Hiding the navigation entry and this demo switch do not provide authentication or administrator authorization.
 
 The read-only researcher workspace has Exploration and Battles views. URL filters preserve experiment, model, method, status, result, search, sort and node exploration context when opening details. Battles are paginated in groups of 25. Group comparisons use model × method within a fixed experiment / prompt set / graph version. Win/loss/tie totals count candidates once per battle; frequency and median steps/calls count candidate executions (one per turn).
 

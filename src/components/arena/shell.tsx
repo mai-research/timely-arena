@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { House, MessagesSquare, Plus, Search, Pencil, Trash2, MoreHorizontal, ChartNoAxesColumnIncreasing, ScanEye } from "lucide-react";
+import { House, MessagesSquare, Plus, Search, Pencil, Trash2, MoreHorizontal, ChartNoAxesColumnIncreasing } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { DropdownMenu, DropdownTrigger, DropdownContent } from "@/components/ui/dropdown";
 import { MenuItem } from "@/components/ui/menu-item";
@@ -16,7 +16,7 @@ import { ShapeProvider } from "@/lib/shape-context";
 import { deleteSession, updateSession, useHistory } from "./history-store";
 import type { Session } from "@/lib/arena/types";
 
-function Surface({ children, adminDemo }: { children: React.ReactNode; adminDemo: boolean }) {
+function Surface({ children }: { children: React.ReactNode }) {
   const { isMobile, setOpenMobile } = useSidebar();
   const { sessions, storageError } = useHistory();
   const pathname = usePathname();
@@ -40,7 +40,6 @@ function Surface({ children, adminDemo }: { children: React.ReactNode; adminDemo
             <SidebarMenuItem><SidebarMenuButton icon={House} isActive={pathname === "/"} onClick={() => navigate("/")}>Home</SidebarMenuButton></SidebarMenuItem>
             <SidebarMenuItem><SidebarMenuButton icon={MessagesSquare} isActive={pathname.startsWith("/arena")} onClick={() => navigate(sorted[0] ? `/arena/${sorted[0].id}` : "/arena")}>Chats</SidebarMenuButton></SidebarMenuItem>
             <SidebarMenuItem><SidebarMenuButton icon={ChartNoAxesColumnIncreasing} isActive={pathname === "/leaderboard"} onClick={() => navigate("/leaderboard")}>Leaderboard</SidebarMenuButton></SidebarMenuItem>
-            {adminDemo && <SidebarMenuItem><SidebarMenuButton icon={ScanEye} isActive={pathname.startsWith("/admin")} onClick={() => navigate("/admin")}>Admin</SidebarMenuButton></SidebarMenuItem>}
             <SidebarMenuItem><SidebarMenuButton icon={Plus} onClick={() => navigate("/")}>New chat</SidebarMenuButton></SidebarMenuItem>
           </SidebarMenu></SidebarGroup>
           <div className="history-search"><Search size={15} /><SidebarInput aria-label="Search chats" placeholder="Search chats…" value={search} onChange={e => setSearch(e.target.value)} /></div>
@@ -83,6 +82,6 @@ function Surface({ children, adminDemo }: { children: React.ReactNode; adminDemo
     </Dialog>
   </>;
 }
-export function ArenaShell({ children, adminDemo = false }: { children: React.ReactNode; adminDemo?: boolean }) {
-  return <MotionConfig reducedMotion="user"><ThemeSync /><ShapeProvider defaultShape="rounded"><SidebarProvider width="16rem" persist={false}><Surface adminDemo={adminDemo}>{children}</Surface></SidebarProvider></ShapeProvider></MotionConfig>;
+export function ArenaShell({ children }: { children: React.ReactNode }) {
+  return <MotionConfig reducedMotion="user"><ThemeSync /><ShapeProvider defaultShape="rounded"><SidebarProvider width="16rem" persist={false}><Surface>{children}</Surface></SidebarProvider></ShapeProvider></MotionConfig>;
 }
