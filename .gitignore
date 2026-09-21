@@ -57,3 +57,9 @@ next-env.d.ts
 # Auto-installed hook wrappers and backups are local only
 /.githooks/*
 !/.githooks/pre-push
+/dist/
+.vinext/
+.wrangler/
+
+# Cloudflare local secrets
+.dev.vars*

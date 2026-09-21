@@ -24,6 +24,33 @@ npm run build -- --webpack
 - Inter and Silkscreen are self-hosted. The favicon is the supplied project asset.
 - See `THIRD_PARTY.md` for imported component sources and local adaptations.
 
+## Cloudflare Workers
+
+Use Node.js 22 or newer. The Workers build uses vinext (currently beta), pinned in the lockfile; the original Next.js development and build commands remain available.
+
+In the Cloudflare **Workers** Git integration for `mai-research/timely-arena`, select `main` and set:
+
+| Setting | Value |
+| --- | --- |
+| Project / Worker name | `timely-arena` |
+| Root directory | repository root |
+| Build command | `npm run build:vinext` |
+| Deploy command | `npm run deploy:vinext` |
+
+This is a server-rendered Worker with static assets, not a Pages static export. The generated `dist/server/wrangler.json` is used for deployment. No database, KV, AI API key, or account ID is required in the repository. Cloudflare's Git integration handles deployment credentials. Disable builds for non-production branches unless you need previews.
+
+```sh
+npm ci
+npm run build:vinext
+npm run start:vinext
+# Deploy manually only after authenticating with Cloudflare:
+npm run deploy:vinext
+```
+
+`wrangler.jsonc` enables the synthetic Admin demo with `ADMIN_DEMO_ENABLED=true`; `/admin` remains accessible by direct URL with no navigation entry or login. Change this variable to `false` in that file and rebuild/redeploy to disable it. This is a demo switch, not authentication. Local Next.js still uses the environment variable described below.
+
+Worker state, build output, and `.dev.vars*` files are ignored. Keep credentials in Cloudflare secrets, never in Wrangler configuration. Chat history remains browser-local; deployments do not create shared user storage.
+
 ## Patient trajectories
 
 Trajectory chats offer **Same patient** (choose the existing 68-year-old man or 71-year-old woman) and **Two patients** (the original pair). Shared-patient comparisons hold age, sex, medical history and medication background fixed while allowing different readings and courses. The chat type, patient setup and A/B assignment stay fixed after creation.
