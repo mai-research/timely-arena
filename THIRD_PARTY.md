@@ -2,7 +2,7 @@
 
 Fluid Functionalism sidebar and its referenced utilities/styles were retrieved from https://www.fluidfunctionalism.com/r/sidebar.json on 2026-09-07. Source components live in `src/components/ui`, `src/hooks`, and the related `src/lib` files; registry CSS lives in `src/app/fluid.css`. Motion imports use `motion/react` instead of `framer-motion`. The upstream MIT copyright and permission notice is included at `licenses/Fluid-Functionalism-MIT.txt`.
 
-The title canvas selects one animation per visit from adaptations of the user-supplied FloodType and BondType implementations. Their shared global timeline is driven by Motion's `useAnimationFrame`. BondType uses the self-hosted Silkscreen pixel font, resamples the supplied poses for TIMELY / ARENA, and keeps adjacent-letter bonds within each word.
+The title canvas selects one animation per visit from adaptations of the user-supplied FloodType and BondType implementations, confirmed by the project owner as MIT licensed on 2026-09-21. Their shared global timeline is driven by Motion's `useAnimationFrame`. BondType uses the self-hosted Silkscreen pixel font, resamples the supplied poses for TIMELY / ARENA, and keeps adjacent-letter bonds within each word.
 
 Pretext (`@chenglou/pretext`) measures the reusable `OutputText` component. The current composer uses AgentUI's native-textarea measurement mirror. No model output is generated on this landing page.
 
@@ -30,12 +30,19 @@ The root MIT license applies to project-authored contributions and synthetic fix
 | Fluid Functionalism | `src/components/ui`, `src/hooks`, shared utilities, `src/app/fluid.css` | MIT; full upstream notice in `licenses/Fluid-Functionalism-MIT.txt` |
 | shadcn/ui chart and table | `src/components/ui/chart.tsx`, `table.tsx` | MIT; full upstream notice in `licenses/shadcn-ui-MIT.txt` |
 | Beautiful UI adaptations | `src/components/beautiful` | MIT; retained upstream notice in `src/components/beautiful/LICENSE` |
-| AgentUI adaptations | `src/components/agentui`, related chat styles | Public copy-paste source; explicit redistribution license has not been verified. Root MIT does not cover upstream portions. |
-| Supplied FloodType / BondType animations | `src/lib/flood-type`, `src/lib/bond-type` | Supplied implementation; ownership or redistribution permission still needs confirmation. |
-| Supplied project favicon | `public/favicon.svg` | Ownership or redistribution permission still needs confirmation. |
+| AgentUI adaptations | `src/components/agentui`, related chat styles | MIT; verified upstream `ashish200729/agentui`. Full copyright and permission notice in `licenses/AgentUI-MIT.txt`. |
+| Supplied FloodType / BondType animations | `src/lib/flood-type`, `src/lib/bond-type` | MIT, confirmed by the project owner on 2026-09-21. Upstream repository/author notice still needs to be recorded; no author attribution is invented here. |
+| Supplied project favicon | `public/favicon.svg` | Original artwork by the project owner, confirmed on 2026-09-21; covered by the project MIT license. |
 | Inter / Silkscreen via Fontsource | `@fontsource-variable/inter`, `@fontsource/silkscreen` | SIL OFL 1.1; retain notices distributed with the packages. |
 | Synthetic demonstration graph | `src/lib/admin/snapshots/synthetic-demo.json`, `scripts/generate-demo-graph.py` | Project-authored, MIT; no clinical source quotations or external graph data. |
 
-Upstream MIT notices were retrieved on 2026-09-21 from https://github.com/mickadesign/fluid-functionalism/blob/main/LICENSE and https://github.com/shadcn-ui/ui/blob/main/LICENSE.md. AgentUI's https://www.agentui.pro/llms.txt describes copying components into a project, but that usage guidance alone is not recorded here as an explicit redistribution license. Resolve the outstanding permission entries before public distribution; do not describe all bundled material as MIT.
+Upstream MIT notices were retrieved on 2026-09-21 from https://github.com/mickadesign/fluid-functionalism/blob/main/LICENSE and https://github.com/shadcn-ui/ui/blob/main/LICENSE.md. AgentUI is separately covered by its upstream MIT notice below. Preserve each upstream copyright and permission notice; the root project license does not replace those notices.
 
 The public branch excludes Patient Iris and its Cosmograph dependency. If that feature is later ported, review its CC BY-NC 4.0 / commercial licensing separately: https://cosmograph.app/licensing/. Never merge the old feature branch into the public branch without first removing its private graph history.
+
+
+### AgentUI upstream verification (2026-09-21)
+
+Verified repository: https://github.com/ashish200729/agentui. Its homepage and README point to `agentui.pro`, and the repository contains the imported `components/agents/prompt-input.tsx`, `message.tsx` and `message-bubble.tsx` component families. This identifies the relevant upstream rather than another project with the same name.
+
+License checked at upstream commit `116726c95a9325fe3a340bd9c94ae6edefb945f6`: https://github.com/ashish200729/agentui/blob/116726c95a9325fe3a340bd9c94ae6edefb945f6/LICENSE. MIT, copyright (c) 2026 Saurabh Chauhan. A complete copy is retained in `licenses/AgentUI-MIT.txt`. Redistribution of copies or substantial portions must include the upstream copyright and permission notice. The license permits modification and commercial use; retain its warranty disclaimer as part of the full notice. This is the current upstream license check, not a claim that the local adaptations exactly match that revision.

@@ -53,3 +53,7 @@ next-env.d.ts
 
 # Original private graph imports
 /src/lib/admin/snapshots/aki-v2.json
+
+# Auto-installed hook wrappers and backups are local only
+/.githooks/*
+!/.githooks/pre-push
