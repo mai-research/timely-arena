@@ -1,0 +1,75 @@
+/* Trajectory chats share the arena palette and keep each A/B stage in one grid row. */
+.history-chat-kind { font:9px/1.4 ui-monospace,monospace; padding:2px 4px; color:var(--muted-foreground); border:1px solid var(--border); border-radius:3px; flex-shrink:0; }
+.history-item .history-title { min-width:0; }
+.trajectory-comparison { min-width:0; }
+.trajectory-caption { display:flex; align-items:center; justify-content:space-between; gap:14px; margin:0 0 18px; font-size:11px; color:var(--muted-foreground); }
+.trajectory-caption > span:first-child { color:var(--foreground); font-size:13px; }
+.trajectory-headings { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; padding-left:15px; margin-bottom:24px; }
+.trajectory-candidate { min-width:0; }
+.trajectory-candidate > header { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:40px; padding:0 0 12px; border-bottom:1px solid var(--border); }
+.trajectory-profile { padding:16px 0 0; }
+.trajectory-profile strong { display:block; font-size:15px; font-weight:550; letter-spacing:-.2px; }
+.trajectory-profile p { margin-top:7px; font-size:12px; line-height:1.6; color:var(--text-secondary); }
+.trajectory-profile > span { display:block; margin-top:4px; font-size:11px; line-height:1.5; color:var(--muted-foreground); }
+.trajectory-stages { list-style:none; padding:0 0 0 15px; margin:0; }
+.trajectory-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; margin:0 0 20px; }
+.trajectory-stage { position:relative; display:flex; flex-direction:column; min-width:0; padding:19px 20px 0; border:1px solid var(--border); border-radius:10px; background:var(--panel); }
+.trajectory-stage[data-animate="true"] { animation:trajectory-enter .24s ease-out both; }
+.trajectory-stage::before { content:""; position:absolute; width:1px; left:-16px; top:-21px; bottom:-21px; background:var(--border); }
+.trajectory-stage::after { content:""; position:absolute; width:7px; height:7px; border-radius:50%; left:-19px; top:24px; background:var(--muted-foreground); box-shadow:0 0 0 4px var(--background); }
+.trajectory-pair:first-child .trajectory-stage::before { top:27px; }
+.trajectory-pair:last-child .trajectory-stage::before { bottom:calc(100% - 27px); }
+.trajectory-stage-meta { display:flex; justify-content:space-between; gap:12px; font:10px/1.5 ui-monospace,monospace; color:var(--muted-foreground); }
+.trajectory-stage h3 { font-size:17px; font-weight:550; letter-spacing:-.35px; margin:9px 0 8px; }
+.trajectory-conditions { color:var(--text-secondary); font-size:10px; line-height:1.6; }
+.trajectory-summary { flex:1; font-size:12px; color:var(--text-secondary); line-height:1.75; margin:12px 0 18px; }
+.trajectory-readings { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px 10px; margin:0; padding:16px 0 20px; border-top:1px solid var(--border); }
+.trajectory-readings dt { font-size:9px; line-height:1.5; color:var(--muted-foreground); }
+.trajectory-readings dd { display:flex; flex-direction:column; gap:3px; margin-top:5px; }
+.trajectory-readings dd strong { font-size:18px; font-weight:500; line-height:1.25; font-variant-numeric:tabular-nums; letter-spacing:-.5px; }
+.trajectory-readings dd span { font-size:9px; color:var(--muted-foreground); }
+.trajectory-readings .reading-missing dd strong { font-size:10px; line-height:1.6; font-weight:400; letter-spacing:0; color:var(--muted-foreground); }
+.trajectory-details { border-top:1px solid var(--border); padding:0; }
+.trajectory-details summary { list-style:none; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:41px; cursor:pointer; font-size:10px; color:var(--muted-foreground); }
+.trajectory-details summary::-webkit-details-marker { display:none; }
+.trajectory-details summary:hover { color:var(--foreground); }
+.trajectory-details summary:focus-visible { outline:2px solid var(--focus-ring); outline-offset:3px; border-radius:2px; }
+.trajectory-details summary svg { transition:transform .18s; flex-shrink:0; }
+.trajectory-details[open] summary svg { transform:rotate(180deg); }
+.trajectory-details > div { padding:0 0 16px; }
+.trajectory-details[open] > div { animation:trajectory-enter .18s ease-out; }
+.trajectory-details p { margin:4px 0 10px; font-size:11px; line-height:1.7; color:var(--text-secondary); }
+.trajectory-details p strong { display:block; font-weight:500; color:var(--foreground); margin-bottom:3px; }
+.trajectory-mobile-label { display:none; }
+.trajectory-loading { padding:16px; font-size:12px; color:var(--muted-foreground); }
+.trajectory-expanded .trajectory-profile { padding:0 0 20px; }
+.trajectory-expanded ol { list-style:none; padding:0 0 0 16px; }
+.trajectory-expanded li { margin-bottom:18px; }
+.trajectory-expanded li:first-child .trajectory-stage::before { top:27px; }
+.trajectory-expanded li:last-child .trajectory-stage::before { bottom:calc(100% - 27px); }
+@keyframes trajectory-enter { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+@media (min-width:768px) and (max-width:1100px) {
+  .trajectory-readings { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .trajectory-stage { padding:17px 16px 0; }
+}
+@media (max-width:767px) {
+  .trajectory-caption { align-items:flex-start; flex-direction:column; gap:5px; }
+  .trajectory-headings { gap:18px; padding-left:0; }
+  .trajectory-profile strong { font-size:13px; }
+  .trajectory-profile p,.trajectory-profile > span { font-size:10px; }
+  .trajectory-candidate > header { align-items:flex-start; flex-direction:column; gap:8px; }
+  .trajectory-candidate .answer-actions { align-self:flex-end; }
+  .trajectory-pair { grid-template-columns:minmax(0,1fr); gap:14px; margin-bottom:28px; }
+  .trajectory-pair .trajectory-stage::before { top:-29px; bottom:-29px; }
+  .trajectory-pair:first-child .trajectory-stage:first-child::before { top:27px; }
+  .trajectory-pair:last-child .trajectory-stage:last-child::before { bottom:calc(100% - 27px); }
+  .trajectory-stage { padding:16px 15px 0; }
+  .trajectory-mobile-label { display:inline; font-weight:400; }
+  .trajectory-readings { gap:16px 8px; }
+  .trajectory-readings dd strong { font-size:17px; }
+}
+@media (max-width:359px) { .trajectory-readings { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (prefers-reduced-motion:reduce) {
+  .trajectory-stage[data-animate="true"],.trajectory-details[open] > div { animation:none; }
+  .trajectory-details summary svg { transition:none; }
+}

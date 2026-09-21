@@ -1,0 +1,428 @@
+{
+  "directed": true,
+  "condition": "Synthetic AKI interface demo",
+  "status": "Synthetic fixture \u00b7 not clinical evidence",
+  "nodes": [
+    {
+      "id": "demo_aki",
+      "name": "Acute Kidney Injury",
+      "type": "Condition",
+      "degree": 16
+    },
+    {
+      "id": "demo_stage",
+      "name": "AKI Stage 1",
+      "type": "Stage",
+      "degree": 0
+    },
+    {
+      "id": "demo_recovery",
+      "name": "Recovery of kidney function",
+      "type": "Outcome",
+      "degree": 0
+    },
+    {
+      "id": "demo_creatinine",
+      "name": "Serum creatinine",
+      "type": "Measurement",
+      "degree": 6
+    },
+    {
+      "id": "demo_urine",
+      "name": "Urine output",
+      "type": "Measurement",
+      "degree": 3
+    },
+    {
+      "id": "demo_oliguria",
+      "name": "Oliguria",
+      "type": "Finding",
+      "degree": 2
+    },
+    {
+      "id": "demo_diarrhoea",
+      "name": "Severe diarrhoea",
+      "type": "Finding",
+      "degree": 1
+    },
+    {
+      "id": "demo_pressure",
+      "name": "Hypotension",
+      "type": "Finding",
+      "degree": 1
+    },
+    {
+      "id": "demo_nsaid",
+      "name": "NSAIDs",
+      "type": "Drug",
+      "degree": 1
+    },
+    {
+      "id": "demo_ace",
+      "name": "ACE inhibitors",
+      "type": "Drug",
+      "degree": 1
+    },
+    {
+      "id": "demo_arb",
+      "name": "ARBs",
+      "type": "Drug",
+      "degree": 1
+    },
+    {
+      "id": "demo_bicarbonate",
+      "name": "Bicarbonate",
+      "type": "Measurement",
+      "degree": 0
+    },
+    {
+      "id": "demo_bun",
+      "name": "Blood urea nitrogen",
+      "type": "Measurement",
+      "degree": 0
+    },
+    {
+      "id": "demo_pulse",
+      "name": "Heart rate",
+      "type": "Measurement",
+      "degree": 0
+    },
+    {
+      "id": "demo_potassium",
+      "name": "Potassium",
+      "type": "Measurement",
+      "degree": 0
+    },
+    {
+      "id": "demo_sodium",
+      "name": "Sodium",
+      "type": "Measurement",
+      "degree": 0
+    },
+    {
+      "id": "demo_baseline",
+      "name": "Baseline serum creatinine",
+      "type": "Measurement",
+      "degree": 2
+    },
+    {
+      "id": "demo_volume",
+      "name": "Dehydration or volume depletion",
+      "type": "Finding",
+      "degree": 1
+    },
+    {
+      "id": "demo_review",
+      "name": "Fluid review",
+      "type": "Intervention",
+      "degree": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "demo_edge_041",
+      "source": "demo_creatinine",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 041; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_042",
+      "source": "demo_creatinine",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 042; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_043",
+      "source": "demo_urine",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 043; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_049",
+      "source": "demo_urine",
+      "target": "demo_oliguria",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 049; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_055",
+      "source": "demo_oliguria",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 055; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_062",
+      "source": "demo_nsaid",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 062; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_064",
+      "source": "demo_ace",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 064; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_065",
+      "source": "demo_arb",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 065; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_068",
+      "source": "demo_diarrhoea",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 068; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_071",
+      "source": "demo_pressure",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 071; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_105",
+      "source": "demo_aki",
+      "target": "demo_creatinine",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 105; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_178",
+      "source": "demo_baseline",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 178; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_304",
+      "source": "demo_baseline",
+      "target": "demo_creatinine",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 304; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_309",
+      "source": "demo_review",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 309; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_357",
+      "source": "demo_volume",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 357; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_736",
+      "source": "demo_creatinine",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 736; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_737",
+      "source": "demo_creatinine",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 737; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    },
+    {
+      "id": "demo_edge_738",
+      "source": "demo_urine",
+      "target": "demo_aki",
+      "relation": "demo_association",
+      "evidence": "Authored synthetic UI association 738; not extracted from a paper or guideline.",
+      "source_id": "demo_source",
+      "strength": "synthetic",
+      "qualifiers": {
+        "context": "UI demonstration only"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "demo_source",
+      "title": "Project-authored synthetic graph fixture",
+      "tier": 0,
+      "source_kind": "synthetic",
+      "hash": "synthetic-v1"
+    }
+  ],
+  "positions": {
+    "demo_aki": {
+      "x": 240.0,
+      "y": 0.0
+    },
+    "demo_stage": {
+      "x": 227.0,
+      "y": 77.93
+    },
+    "demo_recovery": {
+      "x": 189.39,
+      "y": 147.41
+    },
+    "demo_creatinine": {
+      "x": 131.27,
+      "y": 200.92
+    },
+    "demo_urine": {
+      "x": 58.92,
+      "y": 232.66
+    },
+    "demo_oliguria": {
+      "x": -19.82,
+      "y": 239.18
+    },
+    "demo_diarrhoea": {
+      "x": -96.41,
+      "y": 219.79
+    },
+    "demo_pressure": {
+      "x": -162.55,
+      "y": 176.57
+    },
+    "demo_nsaid": {
+      "x": -211.07,
+      "y": 114.23
+    },
+    "demo_ace": {
+      "x": -236.73,
+      "y": 39.5
+    },
+    "demo_arb": {
+      "x": -236.73,
+      "y": -39.5
+    },
+    "demo_bicarbonate": {
+      "x": -211.07,
+      "y": -114.23
+    },
+    "demo_bun": {
+      "x": -162.55,
+      "y": -176.57
+    },
+    "demo_pulse": {
+      "x": -96.41,
+      "y": -219.79
+    },
+    "demo_potassium": {
+      "x": -19.82,
+      "y": -239.18
+    },
+    "demo_sodium": {
+      "x": 58.92,
+      "y": -232.66
+    },
+    "demo_baseline": {
+      "x": 131.27,
+      "y": -200.92
+    },
+    "demo_volume": {
+      "x": 189.39,
+      "y": -147.41
+    },
+    "demo_review": {
+      "x": 227.0,
+      "y": -77.93
+    }
+  },
+  "sourceHash": "62fe5f96a758668ec62e0352ac3ed3c62e7d09ed07eadd05a701d86a267128c6",
+  "version": "synthetic-demo-sha256-62fe5f96a758668ec62e0352ac3ed3c62e7d09ed07eadd05a701d86a267128c6"
+}
